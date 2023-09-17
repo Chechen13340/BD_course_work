@@ -138,21 +138,3 @@ class DBManager:
             if key_word in vacancy['Название вакансии']:
                 key_word_vacancies.append(vacancy)
         return key_word_vacancies
-
-
-url = HH_API_URL
-headers = {"User-Agent": "HH-User-Agent"}
-params = {
-    'text': 'мироэлектроника',
-    'area': 113,
-    'per_page': 100,
-    'page': range(0, 20),
-    'only_with_vacancies': True
-}
-i = DBManager(url, headers, params)
-print(i.get_companies_and_vacancies_count())
-print(i.get_all_vacancies())
-print(i.get_avg_salary())
-print(i.get_vacancies_with_higher_salary())
-key_word = input('Введите ключевое слово: ')
-print(i.get_vacancies_with_keyword(key_word))
