@@ -72,21 +72,26 @@ class DBManager:
                     if num.get('salary') is None:
                         salary_min = 0
                         salary_max = 0
+                        salary_avg = 0
                     elif num['salary']['from'] is None:
                         salary_min = 0
                         salary_max = num['salary']['to']
+                        salary_avg = num['salary']['to']
                     elif num['salary']['to'] is None:
                         salary_min = num['salary']['from']
                         salary_max = 0
+                        salary_avg = num['salary']['from']
                     else:
                         salary_min = num['salary']['from']
                         salary_max = num['salary']['to']
+                        salary_avg = (num['salary']['from'] + num['salary']['to']) // 2
 
                     employer_information.append({
                         'Название компании': company_name,
                         'Название вакансии': vacancies_name,
                         'Заработная плата от': salary_min,
                         'Заработная плата до': salary_max,
+                        'Средняя заработная плата': salary_avg,
                         'Ссылка на вакансию': url_vacancies
                     })
 
