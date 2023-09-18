@@ -6,10 +6,10 @@ from settings import HH_API_URL
 
 
 class DBManager:
-    def __init__(self, url, headers, params):
+    def __init__(self, url, headers, param):
         self.url = url
         self.headers = headers
-        self.params = params
+        self.param = param
 
     def get_companies_and_vacancies_count(self):
         """
@@ -18,7 +18,7 @@ class DBManager:
         """
         employer_information = []
         for page in range(0, 20):
-            params = {
+            param = {
                 'text': 'мироэлектроника',
                 'area': 113,
                 'per_page': 100,
@@ -28,7 +28,7 @@ class DBManager:
 
             url = HH_API_URL
             headers = {"User-Agent": "HH-User-Agent"}
-            response = requests.get(url, headers=headers, params=params)
+            response = requests.get(url, headers=headers, params=param)
             data = response.json()
             for num in data['items']:
                 company_name = num['employer']['name']
@@ -48,7 +48,7 @@ class DBManager:
         """
         employer_information = []
         for page in range(0, 20):
-            params = {
+            param = {
                 'text': 'мироэлектроника',
                 'area': 113,
                 'per_page': 100,
@@ -58,7 +58,7 @@ class DBManager:
 
             url = HH_API_URL
             headers = {"User-Agent": "HH-User-Agent"}
-            response = requests.get(url, headers=headers, params=params)
+            response = requests.get(url, headers=headers, params=param)
             data = response.json()
             for num in data['items']:
                 company_name = num['employer']['name']
